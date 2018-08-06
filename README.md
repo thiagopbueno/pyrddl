@@ -1,4 +1,4 @@
-# pyrddl [![Build Status](https://travis-ci.org/thiagopbueno/pyrddl.svg?branch=master)](https://travis-ci.org/thiagopbueno/pyrddl) [![License](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/thiagopbueno/tf-mdp/blob/master/LICENSE)
+# pyrddl [![Build Status](https://travis-ci.org/thiagopbueno/pyrddl.svg?branch=master)](https://travis-ci.org/thiagopbueno/pyrddl) [![License](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/thiagopbueno/pyrddl/blob/master/LICENSE)
 
 RDDL lexer/parser in Python3.
 
