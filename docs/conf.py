@@ -17,6 +17,10 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 
+# -- imports -----------------------------------------------------------------
+import pyrddl
+
+
 # -- Project information -----------------------------------------------------
 
 project = 'pyrddl'
@@ -24,9 +28,9 @@ copyright = '2018, Thiago P. Bueno'
 author = 'Thiago P. Bueno'
 
 # The short X.Y version
-version = ''
+version = pyrddl.__version__
 # The full version, including alpha/beta/rc tags
-release = ''
+release = pyrddl.__release__
 
 
 # -- General configuration ---------------------------------------------------

@@ -1,0 +1,1539 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pyrddl package &#8212; pyrddl v0.1.0-alpha documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="pyrddl-package">
+<h1>pyrddl package<a class="headerlink" href="#pyrddl-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyrddl.cpf">
+<span id="pyrddl-cpf-module"></span><h2>pyrddl.cpf module<a class="headerlink" href="#module-pyrddl.cpf" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.cpf.CPF">
+<em class="property">class </em><code class="descclassname">pyrddl.cpf.</code><code class="descname">CPF</code><span class="sig-paren">(</span><em>pvar: Tuple[str, Tuple[str, List[str]]], expr: pyrddl.expr.Expression</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.cpf.CPF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Conditional Probability Function.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build a CPF object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pvar</strong> – CPF’s parameterized variable.</li>
+<li><strong>expr</strong> – CPF’s expression.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyrddl.cpf.CPF.pvar">
+<code class="descname">pvar</code><a class="headerlink" href="#pyrddl.cpf.CPF.pvar" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">PVariable</span></code> – CPF’s parameterized variable.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.cpf.CPF.expr">
+<code class="descname">expr</code><a class="headerlink" href="#pyrddl.cpf.CPF.expr" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Expression</span></code> – CPF’s expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.cpf.CPF.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyrddl.cpf.CPF.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the CPF’s canonical representation.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.cpf.CPF.name">
+<code class="descname">name</code><a class="headerlink" href="#pyrddl.cpf.CPF.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the CPF’s pvariable name.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.domain">
+<span id="pyrddl-domain-module"></span><h2>pyrddl.domain module<a class="headerlink" href="#module-pyrddl.domain" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.domain.Domain">
+<em class="property">class </em><code class="descclassname">pyrddl.domain.</code><code class="descname">Domain</code><span class="sig-paren">(</span><em>name: str, requirements: List[str], sections: Dict[str, Sequence]</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.domain.Domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Domain class for accessing RDDL domain sections.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build a Domain object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> – Name of RDDL domain.</li>
+<li><strong>requirements</strong> – List of RDDL requirements.</li>
+<li><strong>sections</strong> – Mapping from string to domain section.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.name">
+<code class="descname">name</code><a class="headerlink" href="#pyrddl.domain.Domain.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Domain identifier.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.requirements">
+<code class="descname">requirements</code><a class="headerlink" href="#pyrddl.domain.Domain.requirements" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>List[str]</em> – List of requirements.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.types">
+<code class="descname">types</code><a class="headerlink" href="#pyrddl.domain.Domain.types" title="Permalink to this definition">¶</a></dt>
+<dd><p>List[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Type</span></code>] – List of types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.pvariables">
+<code class="descname">pvariables</code><a class="headerlink" href="#pyrddl.domain.Domain.pvariables" title="Permalink to this definition">¶</a></dt>
+<dd><p>List[<code class="xref py py-obj docutils literal notranslate"><span class="pre">PVariable</span></code>] – List of parameterized variables.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.cpfs">
+<code class="descname">cpfs</code><a class="headerlink" href="#pyrddl.domain.Domain.cpfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>List[<code class="xref py py-obj docutils literal notranslate"><span class="pre">CPF</span></code>] – List of Conditional Probability Functions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.reward">
+<code class="descname">reward</code><a class="headerlink" href="#pyrddl.domain.Domain.reward" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Expression</span></code> – Reward function.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.preconds">
+<code class="descname">preconds</code><a class="headerlink" href="#pyrddl.domain.Domain.preconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>List[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Expression</span></code>] – List of action preconditions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.constraints">
+<code class="descname">constraints</code><a class="headerlink" href="#pyrddl.domain.Domain.constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>List[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Expression</span></code>] – List of state-action constraints.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.invariants">
+<code class="descname">invariants</code><a class="headerlink" href="#pyrddl.domain.Domain.invariants" title="Permalink to this definition">¶</a></dt>
+<dd><p>List[<code class="xref py py-obj docutils literal notranslate"><span class="pre">Expression</span></code>] – List of state invariants.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.action_fluents">
+<code class="descname">action_fluents</code><a class="headerlink" href="#pyrddl.domain.Domain.action_fluents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns action-fluent pvariables.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.intermediate_cpfs">
+<code class="descname">intermediate_cpfs</code><a class="headerlink" href="#pyrddl.domain.Domain.intermediate_cpfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of intermediate-fluent CPFs in level order.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.intermediate_fluents">
+<code class="descname">intermediate_fluents</code><a class="headerlink" href="#pyrddl.domain.Domain.intermediate_fluents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns interm-fluent pvariables.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.non_fluents">
+<code class="descname">non_fluents</code><a class="headerlink" href="#pyrddl.domain.Domain.non_fluents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns non-fluent pvariables.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.state_cpfs">
+<code class="descname">state_cpfs</code><a class="headerlink" href="#pyrddl.domain.Domain.state_cpfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of state-fluent CPFs.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.domain.Domain.state_fluents">
+<code class="descname">state_fluents</code><a class="headerlink" href="#pyrddl.domain.Domain.state_fluents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns state-fluent pvariables.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.expr">
+<span id="pyrddl-expr-module"></span><h2>pyrddl.expr module<a class="headerlink" href="#module-pyrddl.expr" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.expr.Expression">
+<em class="property">class </em><code class="descclassname">pyrddl.expr.</code><code class="descname">Expression</code><span class="sig-paren">(</span><em>expr: Union[_ForwardRef('Expression'), typing.Tuple]</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.expr.Expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Expression class represents a RDDL expression.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build an Expression object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>expr</strong> – Expression object or nested tuple of Expressions.</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="pyrddl.expr.Expression._Expression__expr_str">
+<em class="property">classmethod </em><code class="descname">_Expression__expr_str</code><span class="sig-paren">(</span><em>expr</em>, <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.expr.Expression._Expression__expr_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string representing the expression.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pyrddl.expr.Expression._Expression__get_scope">
+<em class="property">classmethod </em><code class="descname">_Expression__get_scope</code><span class="sig-paren">(</span><em>expr: Union[_ForwardRef('Expression'), typing.Tuple]</em><span class="sig-paren">)</span> &#x2192; Set[str]<a class="headerlink" href="#pyrddl.expr.Expression._Expression__get_scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of fluents in the expression’s scope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>expr</strong> – Expression object or nested tuple of Expressions.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The set of fluents in the expression’s scope.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.expr.Expression.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyrddl.expr.Expression.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string representing the expression.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="pyrddl.expr.Expression._pvar_to_name">
+<em class="property">classmethod </em><code class="descname">_pvar_to_name</code><span class="sig-paren">(</span><em>pvar_expr</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.expr.Expression._pvar_to_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of pvariable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Name of pvariable.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.expr.Expression.args">
+<code class="descname">args</code><a class="headerlink" href="#pyrddl.expr.Expression.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expression’s arguments.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.expr.Expression.etype">
+<code class="descname">etype</code><a class="headerlink" href="#pyrddl.expr.Expression.etype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the expression’s type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.expr.Expression.is_number_expression">
+<code class="descname">is_number_expression</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pyrddl.expr.Expression.is_number_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if number expression. False, othersize.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.expr.Expression.is_pvariable_expression">
+<code class="descname">is_pvariable_expression</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pyrddl.expr.Expression.is_pvariable_expression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if pvariable expression. False, otherwise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.expr.Expression.name">
+<code class="descname">name</code><a class="headerlink" href="#pyrddl.expr.Expression.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of pvariable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Name of pvariable.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If not a pvariable expression.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.expr.Expression.scope">
+<code class="descname">scope</code><a class="headerlink" href="#pyrddl.expr.Expression.scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the set of fluents in the expression’s scope.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The set of fluents in the expression’s scope.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.expr.Expression.value">
+<code class="descname">value</code><a class="headerlink" href="#pyrddl.expr.Expression.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of number expression.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Value of number.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – If not a number expression.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.instance">
+<span id="pyrddl-instance-module"></span><h2>pyrddl.instance module<a class="headerlink" href="#module-pyrddl.instance" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.instance.Instance">
+<em class="property">class </em><code class="descclassname">pyrddl.instance.</code><code class="descname">Instance</code><span class="sig-paren">(</span><em>name: str, sections: Dict[str, Sequence]</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.instance.Instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Instance class for accessing RDDL instance sections.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build an Instance object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> – Name of RDDL instance.</li>
+<li><strong>sections</strong> – Mapping from string to instance section.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.name">
+<code class="descname">name</code><a class="headerlink" href="#pyrddl.instance.Instance.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of RDDL instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.domain">
+<code class="descname">domain</code><a class="headerlink" href="#pyrddl.instance.Instance.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of RDDL domain.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.non_fluents">
+<code class="descname">non_fluents</code><a class="headerlink" href="#pyrddl.instance.Instance.non_fluents" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of RDDL non-fluents.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.init_state">
+<code class="descname">init_state</code><a class="headerlink" href="#pyrddl.instance.Instance.init_state" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluentInitializerList</span></code> – List of initial state initializers.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.max_nondef_actions">
+<code class="descname">max_nondef_actions</code><a class="headerlink" href="#pyrddl.instance.Instance.max_nondef_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Union[int, str]</em> – Maximum number of non-default actions.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.horizon">
+<code class="descname">horizon</code><a class="headerlink" href="#pyrddl.instance.Instance.horizon" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Union[int, str]</em> – Number of decision timesteps.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.instance.Instance.discount">
+<code class="descname">discount</code><a class="headerlink" href="#pyrddl.instance.Instance.discount" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – Discount factor.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.nonfluents">
+<span id="pyrddl-nonfluents-module"></span><h2>pyrddl.nonfluents module<a class="headerlink" href="#module-pyrddl.nonfluents" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.nonfluents.NonFluents">
+<em class="property">class </em><code class="descclassname">pyrddl.nonfluents.</code><code class="descname">NonFluents</code><span class="sig-paren">(</span><em>name: str, sections: Dict[str, Sequence]</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.nonfluents.NonFluents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NonFluents class for accessing RDDL non-fluents sections.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build a NonFluents object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> – Name of RDDL non-fluents.</li>
+<li><strong>sections</strong> – Mapping from string to non-fluents section.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyrddl.nonfluents.NonFluents.name">
+<code class="descname">name</code><a class="headerlink" href="#pyrddl.nonfluents.NonFluents.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of RDDL non-fluents block.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.nonfluents.NonFluents.domain">
+<code class="descname">domain</code><a class="headerlink" href="#pyrddl.nonfluents.NonFluents.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of RDDL domain block.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.nonfluents.NonFluents.objects">
+<code class="descname">objects</code><a class="headerlink" href="#pyrddl.nonfluents.NonFluents.objects" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ObjectsList</span></code> – List of RDDL objects for each type.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.nonfluents.NonFluents.init_non_fluent">
+<code class="descname">init_non_fluent</code><a class="headerlink" href="#pyrddl.nonfluents.NonFluents.init_non_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">FluentInitializerList</span></code> – List of non-fluent initializers.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.parser">
+<span id="pyrddl-parser-module"></span><h2>pyrddl.parser module<a class="headerlink" href="#module-pyrddl.parser" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.parser.RDDLParser">
+<em class="property">class </em><code class="descclassname">pyrddl.parser.</code><code class="descname">RDDLParser</code><span class="sig-paren">(</span><em>lexer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_action_precond_def">
+<code class="descname">p_action_precond_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_action_precond_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>action_precond_def : expr SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_action_precond_list">
+<code class="descname">p_action_precond_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_action_precond_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>action_precond_list : action_precond_list action_precond_def
+| action_precond_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_action_precond_section">
+<code class="descname">p_action_precond_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_action_precond_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>action_precond_section : ACTION_PRECONDITIONS LCURLY action_precond_list RCURLY SEMI
+| ACTION_PRECONDITIONS LCURLY RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_actionfluent_def">
+<code class="descname">p_actionfluent_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_actionfluent_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>actionfluent_def : IDENT LPAREN param_list RPAREN COLON LCURLY ACTION COMMA type_spec COMMA DEFAULT ASSIGN_EQUAL range_const RCURLY SEMI
+| IDENT COLON LCURLY ACTION COMMA type_spec COMMA DEFAULT ASSIGN_EQUAL range_const RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_aggregation_expr">
+<code class="descname">p_aggregation_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_aggregation_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregation_expr : IDENT UNDERSCORE LCURLY typed_var_list RCURLY expr %prec AGG_OPER</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_bool_type">
+<code class="descname">p_bool_type</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_bool_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool_type : TRUE
+| FALSE</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_boolean_expr">
+<code class="descname">p_boolean_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_boolean_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>boolean_expr : expr AND expr
+| expr AMPERSAND expr
+| expr OR expr
+| expr IMPLY expr
+| expr EQUIV expr
+| NOT expr %prec UMINUS
+| bool_type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_case_def">
+<code class="descname">p_case_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_case_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>case_def : CASE term COLON expr
+| DEFAULT COLON expr</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_case_list">
+<code class="descname">p_case_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_case_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>case_list : case_list COMMA case_def
+| case_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_control_expr">
+<code class="descname">p_control_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_control_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>control_expr : IF LPAREN expr RPAREN THEN expr ELSE expr %prec IF
+| SWITCH LPAREN term RPAREN LCURLY case_list RCURLY</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_cpf_def">
+<code class="descname">p_cpf_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_cpf_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>cpf_def : pvar_expr ASSIGN_EQUAL expr SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_cpf_header">
+<code class="descname">p_cpf_header</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_cpf_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>cpf_header : CPFS
+| CDFS</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_cpf_list">
+<code class="descname">p_cpf_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_cpf_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>cpf_list : cpf_list cpf_def
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_cpf_section">
+<code class="descname">p_cpf_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_cpf_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>cpf_section : cpf_header LCURLY cpf_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_discount_section">
+<code class="descname">p_discount_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_discount_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>discount_section : DISCOUNT ASSIGN_EQUAL DOUBLE SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_domain_block">
+<code class="descname">p_domain_block</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_domain_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>domain_block : DOMAIN IDENT LCURLY req_section domain_list RCURLY</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_domain_list">
+<code class="descname">p_domain_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_domain_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>domain_list : domain_list type_section
+| domain_list pvar_section
+| domain_list cpf_section
+| domain_list reward_section
+| domain_list action_precond_section
+| domain_list state_action_constraint_section
+| domain_list state_invariant_section
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_domain_section">
+<code class="descname">p_domain_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_domain_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>domain_section : DOMAIN ASSIGN_EQUAL IDENT SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_double_type">
+<code class="descname">p_double_type</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_double_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>double_type : DOUBLE
+| MINUS DOUBLE
+| POS_INF
+| NEG_INF</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_empty">
+<code class="descname">p_empty</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>empty :</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_enum_list">
+<code class="descname">p_enum_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_enum_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>enum_list : enum_list COMMA ENUM_VAL
+| ENUM_VAL
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_error">
+<code class="descname">p_error</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_expr">
+<code class="descname">p_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>expr : pvar_expr
+| group_expr
+| function_expr
+| relational_expr
+| boolean_expr
+| quantifier_expr
+| numerical_expr
+| aggregation_expr
+| control_expr
+| randomvar_expr</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_expr_list">
+<code class="descname">p_expr_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_expr_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>expr_list : expr_list COMMA expr
+| expr</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_function_expr">
+<code class="descname">p_function_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_function_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>function_expr : IDENT LBRACK expr_list RBRACK</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_group_expr">
+<code class="descname">p_group_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_group_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>group_expr : LBRACK expr RBRACK
+| LPAREN expr RPAREN</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_horizon_spec_section">
+<code class="descname">p_horizon_spec_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_horizon_spec_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>horizon_spec_section : HORIZON ASSIGN_EQUAL pos_int_type_or_pos_inf SEMI
+| HORIZON ASSIGN_EQUAL TERMINATE_WHEN LPAREN expr RPAREN</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_init_non_fluent_section">
+<code class="descname">p_init_non_fluent_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_init_non_fluent_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>init_non_fluent_section : NON_FLUENTS LCURLY pvar_inst_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_init_state_section">
+<code class="descname">p_init_state_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_init_state_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>init_state_section : INIT_STATE LCURLY pvar_inst_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_instance_block">
+<code class="descname">p_instance_block</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_instance_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>instance_block : INSTANCE IDENT LCURLY instance_list RCURLY</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_instance_list">
+<code class="descname">p_instance_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_instance_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>instance_list : instance_list domain_section
+| instance_list nonfluents_section
+| instance_list objects_section
+| instance_list init_state_section
+| instance_list max_nondef_actions_section
+| instance_list horizon_spec_section
+| instance_list discount_section
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_int_type">
+<code class="descname">p_int_type</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_int_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>int_type : INTEGER
+| MINUS INTEGER</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_intermfluent_def">
+<code class="descname">p_intermfluent_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_intermfluent_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>intermfluent_def : IDENT LPAREN param_list RPAREN COLON LCURLY INTERMEDIATE COMMA type_spec COMMA LEVEL ASSIGN_EQUAL range_const RCURLY SEMI
+| IDENT COLON LCURLY INTERMEDIATE COMMA type_spec COMMA LEVEL ASSIGN_EQUAL range_const RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_lconst">
+<code class="descname">p_lconst</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_lconst" title="Permalink to this definition">¶</a></dt>
+<dd><p>lconst : IDENT
+| ENUM_VAL</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_lconst_case_list">
+<code class="descname">p_lconst_case_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_lconst_case_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>lconst_case_list : lconst COLON expr
+| lconst COLON OTHERWISE
+| lconst_case_list COMMA lconst COLON expr</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_lconst_list">
+<code class="descname">p_lconst_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_lconst_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>lconst_list : lconst_list COMMA lconst
+| lconst</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_max_nondef_actions_section">
+<code class="descname">p_max_nondef_actions_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_max_nondef_actions_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>max_nondef_actions_section : MAX_NONDEF_ACTIONS ASSIGN_EQUAL pos_int_type_or_pos_inf SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_nonfluent_block">
+<code class="descname">p_nonfluent_block</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_nonfluent_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>nonfluent_block : NON_FLUENTS IDENT LCURLY nonfluent_list RCURLY</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_nonfluent_def">
+<code class="descname">p_nonfluent_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_nonfluent_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>nonfluent_def : IDENT LPAREN param_list RPAREN COLON LCURLY NON_FLUENT COMMA type_spec COMMA DEFAULT ASSIGN_EQUAL range_const RCURLY SEMI
+| IDENT COLON LCURLY NON_FLUENT COMMA type_spec COMMA DEFAULT ASSIGN_EQUAL range_const RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_nonfluent_list">
+<code class="descname">p_nonfluent_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_nonfluent_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>nonfluent_list : nonfluent_list domain_section
+| nonfluent_list objects_section
+| nonfluent_list init_non_fluent_section
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_nonfluents_section">
+<code class="descname">p_nonfluents_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_nonfluents_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>nonfluents_section : NON_FLUENTS ASSIGN_EQUAL IDENT SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_numerical_expr">
+<code class="descname">p_numerical_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_numerical_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>numerical_expr : expr PLUS expr
+| expr MINUS expr
+| expr TIMES expr
+| expr DIV expr
+| MINUS expr %prec UMINUS
+| PLUS expr %prec UMINUS
+| INTEGER
+| DOUBLE</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_object_const_list">
+<code class="descname">p_object_const_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_object_const_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>object_const_list : object_const_list COMMA IDENT
+| IDENT</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_objects_def">
+<code class="descname">p_objects_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_objects_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>objects_def : IDENT COLON LCURLY object_const_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_objects_list">
+<code class="descname">p_objects_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_objects_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>objects_list : objects_list objects_def
+| objects_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_objects_section">
+<code class="descname">p_objects_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_objects_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>objects_section : OBJECTS LCURLY objects_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_param_list">
+<code class="descname">p_param_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_param_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>param_list : string_list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pos_int_type_or_pos_inf">
+<code class="descname">p_pos_int_type_or_pos_inf</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pos_int_type_or_pos_inf" title="Permalink to this definition">¶</a></dt>
+<dd><p>pos_int_type_or_pos_inf : INTEGER
+| POS_INF</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pvar_def">
+<code class="descname">p_pvar_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pvar_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>pvar_def : nonfluent_def
+| statefluent_def
+| actionfluent_def
+| intermfluent_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pvar_expr">
+<code class="descname">p_pvar_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pvar_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>pvar_expr : IDENT LPAREN term_list RPAREN
+| IDENT</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pvar_inst_def">
+<code class="descname">p_pvar_inst_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pvar_inst_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>pvar_inst_def : IDENT LPAREN lconst_list RPAREN SEMI
+| IDENT SEMI
+| NOT IDENT LPAREN lconst_list RPAREN SEMI
+| NOT IDENT SEMI
+| IDENT LPAREN lconst_list RPAREN ASSIGN_EQUAL range_const SEMI
+| IDENT ASSIGN_EQUAL range_const SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pvar_inst_list">
+<code class="descname">p_pvar_inst_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pvar_inst_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>pvar_inst_list : pvar_inst_list pvar_inst_def
+| pvar_inst_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pvar_list">
+<code class="descname">p_pvar_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pvar_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>pvar_list : pvar_list pvar_def
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_pvar_section">
+<code class="descname">p_pvar_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_pvar_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>pvar_section : PVARIABLES LCURLY pvar_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_quantifier_expr">
+<code class="descname">p_quantifier_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_quantifier_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>quantifier_expr : FORALL UNDERSCORE LCURLY typed_var_list RCURLY expr %prec FORALL
+| EXISTS UNDERSCORE LCURLY typed_var_list RCURLY expr %prec EXISTS</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_randomvar_expr">
+<code class="descname">p_randomvar_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_randomvar_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>randomvar_expr : BERNOULLI LPAREN expr RPAREN
+| DIRAC_DELTA LPAREN expr RPAREN
+| KRON_DELTA LPAREN expr RPAREN
+| UNIFORM LPAREN expr COMMA expr RPAREN
+| NORMAL LPAREN expr COMMA expr RPAREN
+| EXPONENTIAL LPAREN expr RPAREN
+| DISCRETE LPAREN IDENT COMMA lconst_case_list RPAREN
+| DIRICHLET LPAREN IDENT COMMA expr RPAREN
+| POISSON LPAREN expr RPAREN
+| WEIBULL LPAREN expr COMMA expr RPAREN
+| GAMMA   LPAREN expr COMMA expr RPAREN</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_range_const">
+<code class="descname">p_range_const</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_range_const" title="Permalink to this definition">¶</a></dt>
+<dd><p>range_const : bool_type
+| double_type
+| int_type
+| IDENT</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_rddl">
+<code class="descname">p_rddl</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_rddl" title="Permalink to this definition">¶</a></dt>
+<dd><p>rddl : rddl_block</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_rddl_block">
+<code class="descname">p_rddl_block</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_rddl_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>rddl_block : rddl_block domain_block
+| rddl_block instance_block
+| rddl_block nonfluent_block
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_relational_expr">
+<code class="descname">p_relational_expr</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_relational_expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>relational_expr : expr COMP_EQUAL expr
+| expr NEQ expr
+| expr GREATER expr
+| expr GREATEREQ expr
+| expr LESS expr
+| expr LESSEQ expr</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_req_section">
+<code class="descname">p_req_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_req_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>req_section : REQUIREMENTS ASSIGN_EQUAL LCURLY string_list RCURLY SEMI
+| REQUIREMENTS LCURLY string_list RCURLY SEMI
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_reward_section">
+<code class="descname">p_reward_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_reward_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>reward_section : REWARD ASSIGN_EQUAL expr SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_state_action_constraint_section">
+<code class="descname">p_state_action_constraint_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_state_action_constraint_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>state_action_constraint_section : STATE_ACTION_CONSTRAINTS LCURLY state_cons_list RCURLY SEMI
+| STATE_ACTION_CONSTRAINTS LCURLY RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_state_cons_def">
+<code class="descname">p_state_cons_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_state_cons_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>state_cons_def : expr SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_state_cons_list">
+<code class="descname">p_state_cons_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_state_cons_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>state_cons_list : state_cons_list state_cons_def
+| state_cons_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_state_invariant_def">
+<code class="descname">p_state_invariant_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_state_invariant_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>state_invariant_def : expr SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_state_invariant_list">
+<code class="descname">p_state_invariant_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_state_invariant_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>state_invariant_list : state_invariant_list state_invariant_def
+| state_invariant_def</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_state_invariant_section">
+<code class="descname">p_state_invariant_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_state_invariant_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>state_invariant_section : STATE_INVARIANTS LCURLY state_invariant_list RCURLY SEMI
+| STATE_INVARIANTS LCURLY RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_statefluent_def">
+<code class="descname">p_statefluent_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_statefluent_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>statefluent_def : IDENT LPAREN param_list RPAREN COLON LCURLY STATE COMMA type_spec COMMA DEFAULT ASSIGN_EQUAL range_const RCURLY SEMI
+| IDENT COLON LCURLY STATE COMMA type_spec COMMA DEFAULT ASSIGN_EQUAL range_const RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_string_list">
+<code class="descname">p_string_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_string_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>string_list : string_list COMMA IDENT
+| IDENT
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_term">
+<code class="descname">p_term</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_term" title="Permalink to this definition">¶</a></dt>
+<dd><p>term : VAR
+| ENUM_VAL
+| pvar_expr</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_term_list">
+<code class="descname">p_term_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_term_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>term_list : term_list COMMA term
+| term
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_type_def">
+<code class="descname">p_type_def</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_type_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>type_def : IDENT COLON OBJECT SEMI
+| IDENT COLON LCURLY enum_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_type_list">
+<code class="descname">p_type_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_type_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>type_list : type_list type_def
+| empty</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_type_section">
+<code class="descname">p_type_section</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_type_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>type_section : TYPES LCURLY type_list RCURLY SEMI</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_type_spec">
+<code class="descname">p_type_spec</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_type_spec" title="Permalink to this definition">¶</a></dt>
+<dd><p>type_spec : IDENT
+| INT
+| REAL
+| BOOL</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_typed_var">
+<code class="descname">p_typed_var</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_typed_var" title="Permalink to this definition">¶</a></dt>
+<dd><p>typed_var : VAR COLON IDENT</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.p_typed_var_list">
+<code class="descname">p_typed_var_list</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.p_typed_var_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>typed_var_list : typed_var_list COMMA typed_var
+| typed_var</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLParser.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyrddl.parser.RDDLlex">
+<em class="property">class </em><code class="descclassname">pyrddl.parser.</code><code class="descname">RDDLlex</code><a class="headerlink" href="#pyrddl.parser.RDDLlex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.input">
+<code class="descname">input</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_AMPERSAND">
+<code class="descname">t_AMPERSAND</code><em class="property"> = '\\&amp;'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_AMPERSAND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_AND">
+<code class="descname">t_AND</code><em class="property"> = '\\^'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_AND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_ASSIGN_EQUAL">
+<code class="descname">t_ASSIGN_EQUAL</code><em class="property"> = '='</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_ASSIGN_EQUAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_COLON">
+<code class="descname">t_COLON</code><em class="property"> = ':'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_COLON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_COMMA">
+<code class="descname">t_COMMA</code><em class="property"> = '\\,'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_COMMA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_COMMENT">
+<code class="descname">t_COMMENT</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_COMMENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>//[^rn]*</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_COMP_EQUAL">
+<code class="descname">t_COMP_EQUAL</code><em class="property"> = '=='</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_COMP_EQUAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_DIV">
+<code class="descname">t_DIV</code><em class="property"> = '/'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_DIV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_DOLLAR_SIGN">
+<code class="descname">t_DOLLAR_SIGN</code><em class="property"> = '\\$'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_DOLLAR_SIGN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_DOT">
+<code class="descname">t_DOT</code><em class="property"> = '\\.'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_DOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_DOUBLE">
+<code class="descname">t_DOUBLE</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_DOUBLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_ENUM_VAL">
+<code class="descname">t_ENUM_VAL</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_ENUM_VAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_EQUIV">
+<code class="descname">t_EQUIV</code><em class="property"> = '&lt;=&gt;'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_EQUIV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_GREATER">
+<code class="descname">t_GREATER</code><em class="property"> = '&gt;'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_GREATER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_GREATEREQ">
+<code class="descname">t_GREATEREQ</code><em class="property"> = '&gt;='</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_GREATEREQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_IDENT">
+<code class="descname">t_IDENT</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_IDENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_IMPLY">
+<code class="descname">t_IMPLY</code><em class="property"> = '=&gt;'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_IMPLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_INTEGER">
+<code class="descname">t_INTEGER</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_INTEGER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_LBRACK">
+<code class="descname">t_LBRACK</code><em class="property"> = '\\['</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_LBRACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_LCURLY">
+<code class="descname">t_LCURLY</code><em class="property"> = '\\{'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_LCURLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_LESS">
+<code class="descname">t_LESS</code><em class="property"> = '&lt;'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_LESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_LESSEQ">
+<code class="descname">t_LESSEQ</code><em class="property"> = '&lt;='</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_LESSEQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_LPAREN">
+<code class="descname">t_LPAREN</code><em class="property"> = '\\('</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_LPAREN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_MINUS">
+<code class="descname">t_MINUS</code><em class="property"> = '-'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_MINUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_NEQ">
+<code class="descname">t_NEQ</code><em class="property"> = '~='</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_NEQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_NOT">
+<code class="descname">t_NOT</code><em class="property"> = '~'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_NOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_OR">
+<code class="descname">t_OR</code><em class="property"> = '\\|'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_OR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_PLUS">
+<code class="descname">t_PLUS</code><em class="property"> = '\\+'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_PLUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_QUESTION">
+<code class="descname">t_QUESTION</code><em class="property"> = '\\?'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_QUESTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_RBRACK">
+<code class="descname">t_RBRACK</code><em class="property"> = '\\]'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_RBRACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_RCURLY">
+<code class="descname">t_RCURLY</code><em class="property"> = '\\}'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_RCURLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_RPAREN">
+<code class="descname">t_RPAREN</code><em class="property"> = '\\)'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_RPAREN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_SEMI">
+<code class="descname">t_SEMI</code><em class="property"> = ';'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_SEMI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_TIMES">
+<code class="descname">t_TIMES</code><em class="property"> = '\\*'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_TIMES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_UNDERSCORE">
+<code class="descname">t_UNDERSCORE</code><em class="property"> = '\\_'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_UNDERSCORE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_VAR">
+<code class="descname">t_VAR</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_VAR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_error">
+<code class="descname">t_error</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.parser.RDDLlex.t_ignore">
+<code class="descname">t_ignore</code><em class="property"> = ' \t'</em><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_ignore" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.t_newline">
+<code class="descname">t_newline</code><span class="sig-paren">(</span><em>t</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.t_newline" title="Permalink to this definition">¶</a></dt>
+<dd><p>n+</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.parser.RDDLlex.token">
+<code class="descname">token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.parser.RDDLlex.token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.parsetab">
+<span id="pyrddl-parsetab-module"></span><h2>pyrddl.parsetab module<a class="headerlink" href="#module-pyrddl.parsetab" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyrddl.pvariable">
+<span id="pyrddl-pvariable-module"></span><h2>pyrddl.pvariable module<a class="headerlink" href="#module-pyrddl.pvariable" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.pvariable.PVariable">
+<em class="property">class </em><code class="descclassname">pyrddl.pvariable.</code><code class="descname">PVariable</code><span class="sig-paren">(</span><em>name: str, fluent_type: str, range_type: str, param_types: Union[typing.List[str], NoneType] = None, default: Union[int, float, NoneType] = None, level: Union[int, NoneType] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.pvariable.PVariable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Parameterized Variable.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build a PVariable object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> (<em>str</em>) – Name of fluent.</li>
+<li><strong>fluent_type</strong> (<em>str</em>) – Type of fluent.</li>
+<li><strong>range</strong> (<em>str</em>) – Range of fluent.</li>
+<li><strong>param_types</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – List of parameter types.</li>
+<li><strong>default</strong> (<em>Optional</em><em>[</em><em>FluentValue</em><em>]</em>) – Default value of fluent.</li>
+<li><strong>level</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – Level of intermediate fluent.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.name">
+<code class="descname">name</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Name of fluent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.fluent_type">
+<code class="descname">fluent_type</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.fluent_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Type of fluent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.range">
+<code class="descname">range</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.range" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – Range of fluent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.param_types">
+<code class="descname">param_types</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.param_types" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Optional[List[str]]</em> – List of parameter types.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.default">
+<code class="descname">default</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.default" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Optional[FluentValue]</em> – Default value of fluent.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.level">
+<code class="descname">level</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.level" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Optional[int]</em> – Level of intermediate fluent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.pvariable.PVariable.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyrddl.pvariable.PVariable.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns canonical string representation of PVariable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.pvariable.PVariable.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyrddl.pvariable.PVariable.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns string value of PVariable.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.pvariable.PVariable.arity">
+<code class="descname">arity</code><a class="headerlink" href="#pyrddl.pvariable.PVariable.arity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns arity of fluent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.pvariable.PVariable.is_action_fluent">
+<code class="descname">is_action_fluent</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pyrddl.pvariable.PVariable.is_action_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if fluent is of action-fluent type. False, otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.pvariable.PVariable.is_intermediate_fluent">
+<code class="descname">is_intermediate_fluent</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pyrddl.pvariable.PVariable.is_intermediate_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if fluent is of interm-fluent type. False, otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.pvariable.PVariable.is_non_fluent">
+<code class="descname">is_non_fluent</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pyrddl.pvariable.PVariable.is_non_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if fluent is of non-fluent type. False, otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyrddl.pvariable.PVariable.is_state_fluent">
+<code class="descname">is_state_fluent</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pyrddl.pvariable.PVariable.is_state_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if fluent is of state-fluent type. False, otherwise.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.rddl">
+<span id="pyrddl-rddl-module"></span><h2>pyrddl.rddl module<a class="headerlink" href="#module-pyrddl.rddl" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyrddl.rddl.RDDL">
+<em class="property">class </em><code class="descclassname">pyrddl.rddl.</code><code class="descname">RDDL</code><span class="sig-paren">(</span><em>blocks: Dict[str, Union[pyrddl.domain.Domain, pyrddl.nonfluents.NonFluents, pyrddl.instance.Instance]]</em><span class="sig-paren">)</span><a class="headerlink" href="#pyrddl.rddl.RDDL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>RDDL class for accessing RDDL blocks.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is intended to be solely used by the parser and compiler.
+Do not attempt to directly use this class to build a RDDL object.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>blocks</strong> – Mapping from string to RDDL block.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pyrddl.rddl.RDDL.domain">
+<code class="descname">domain</code><a class="headerlink" href="#pyrddl.rddl.RDDL.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Domain</span></code> – RDDL domain block.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.rddl.RDDL.non_fluents">
+<code class="descname">non_fluents</code><a class="headerlink" href="#pyrddl.rddl.RDDL.non_fluents" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">NonFluents</span></code> – RDDL non-fluents block.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyrddl.rddl.RDDL.instance">
+<code class="descname">instance</code><a class="headerlink" href="#pyrddl.rddl.RDDL.instance" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Instance</span></code> – RDDL instance block.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl.utils">
+<span id="pyrddl-utils-module"></span><h2>pyrddl.utils module<a class="headerlink" href="#module-pyrddl.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyrddl.utils.rename_next_state_fluent">
+<code class="descclassname">pyrddl.utils.</code><code class="descname">rename_next_state_fluent</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyrddl.utils.rename_next_state_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns next state fluent canonical name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – The current state fluent name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The next state fluent name.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyrddl.utils.rename_state_fluent">
+<code class="descclassname">pyrddl.utils.</code><code class="descname">rename_state_fluent</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#pyrddl.utils.rename_state_fluent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current state fluent canonical name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>str</em>) – The next state fluent name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The current state fluent name.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyrddl">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyrddl" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pyrddl</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Thiago P. Bueno.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/pyrddl.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
