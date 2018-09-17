@@ -4,7 +4,7 @@ RDDL lexer/parser in Python3.
 
 # Quickstart
 
-```bash
+```text
 $ pip3 install pyrddl
 ```
 
@@ -16,7 +16,7 @@ $ pip3 install pyrddl
 The ``pyrddl`` script provides ways to parse and inspect RDDL files
 from the command line.
 
-```bash
+```text
 $pyrddl --help
 
 usage: pyrddl [-h] [-v] rddl
@@ -39,12 +39,16 @@ with your own Python package/project.
 ```python
 from pyrddl import RDDLParser
 
+# read RDDL file
+with open(filepath, 'r') as file:
+    rddl = file.read()
+
 # buid parser
 parser = RDDLParser()
 parser.build()
 
 # parse RDDL
-rddl = parser.parse(rddl)
+model = parser.parse(rddl) # AST
 ```
 
 # License
