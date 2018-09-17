@@ -1,7 +1,7 @@
 import pyrddl
 
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(filename):
@@ -20,7 +20,7 @@ setup(
     license='GNU General Public License v3.0',
     keywords=['rddl', 'parser', 'mdp', 'dbn'],
     url='https://github.com/thiagopbueno/pyrddl',
-    packages=['pyrddl', 'tests'],
+    packages=find_packages(),
     scripts=['scripts/pyrddl'],
     install_requires=[
         'ply',
