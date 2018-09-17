@@ -4,6 +4,4 @@ pyrddl
 .. toctree::
    :maxdepth: 4
 
-   conf
    pyrddl
-   setup
