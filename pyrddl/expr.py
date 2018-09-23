@@ -58,6 +58,12 @@ class Expression(object):
             return ('aggregation', 'sum')
         elif self._expr[0] == 'prod':
             return ('aggregation', 'prod')
+        elif self._expr[0] == 'avg':
+            return ('aggregation', 'avg')
+        elif self._expr[0] == 'max':
+            return ('aggregation', 'maximum')
+        elif self._expr[0] == 'min':
+            return ('aggregation', 'minimum')
         elif self._expr[0] == 'forall':
             return ('aggregation', 'forall')
         elif self._expr[0] == 'exists':
@@ -84,9 +90,7 @@ class Expression(object):
             return self._expr[1]
         elif self._expr[0] == 'func':
             return self._expr[1][1]
-        elif self._expr[0] in ['sum', 'prod', 'forall', 'exists']:
-            return self._expr[1]
-        elif self._expr[0] == 'abs':
+        elif self._expr[0] in ['sum', 'prod', 'avg', 'max', 'min', 'forall', 'exists']:
             return self._expr[1]
         elif self._expr[0] == 'if':
             return self._expr[1]
