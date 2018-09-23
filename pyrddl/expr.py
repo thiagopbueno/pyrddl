@@ -97,6 +97,10 @@ class Expression(object):
         else:
             return []
 
+    def is_constant_expression(self) -> bool:
+        '''Returns True if constant expression. False, othersize.'''
+        return self.etype[0] == 'constant'
+
     def is_pvariable_expression(self) -> bool:
         '''Returns True if pvariable expression. False, otherwise.'''
         return self.etype[0] == 'pvar'
@@ -114,10 +118,6 @@ class Expression(object):
         if not self.is_pvariable_expression():
             raise ValueError('Expression is not a pvariable.')
         return self._pvar_to_name(self.args)
-
-    def is_number_expression(self) -> bool:
-        '''Returns True if number expression. False, othersize.'''
-        return self.etype[0] == 'number'
 
     @property
     def value(self):
