@@ -40,7 +40,7 @@ class Expression(object):
     @property
     def etype(self) -> Tuple[str, str]:
         '''Returns the expression's type.'''
-        if self._expr[0] == 'number':
+        if self._expr[0] in ['number', 'boolean']:
             return ('number', str(type(self._expr[1])))
         elif self._expr[0] == 'pvar_expr':
             return ('pvar', self._expr[1][0])
