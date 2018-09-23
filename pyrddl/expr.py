@@ -121,15 +121,15 @@ class Expression(object):
 
     @property
     def value(self):
-        '''Returns the value of number expression.
+        '''Returns the value of a constant expression.
 
         Returns:
-            Value of number.
+            Value of constant.
 
         Raises:
-            ValueError: If not a number expression.
+            ValueError: If not a constant expression.
         '''
-        if not self.is_number_expression():
+        if not self.is_constant_expression():
             raise ValueError('Expression is not a number.')
         return self.args
 
