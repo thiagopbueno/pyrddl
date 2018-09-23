@@ -41,7 +41,7 @@ class Expression(object):
     def etype(self) -> Tuple[str, str]:
         '''Returns the expression's type.'''
         if self._expr[0] in ['number', 'boolean']:
-            return ('number', str(type(self._expr[1])))
+            return ('constant', str(type(self._expr[1])))
         elif self._expr[0] == 'pvar_expr':
             return ('pvar', self._expr[1][0])
         elif self._expr[0] == 'randomvar':
@@ -76,7 +76,7 @@ class Expression(object):
     @property
     def args(self) -> Union[Value, Sequence[ExprArg]]:
         '''Returns the expression's arguments.'''
-        if self._expr[0] == 'number':
+        if self._expr[0] in ['number', 'boolean']:
             return self._expr[1]
         elif self._expr[0] == 'pvar_expr':
             return self._expr[1]
