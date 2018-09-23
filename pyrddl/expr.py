@@ -145,7 +145,7 @@ class Expression(object):
         if isinstance(expr, tuple):
             return '{}{}'.format(ident, str(expr))
 
-        if expr.etype[0] in ['pvar', 'number']:
+        if expr.etype[0] in ['pvar', 'constant']:
             return '{}Expression(etype={}, args={})'.format(ident, expr.etype, expr.args)
 
         if not isinstance(expr, Expression):
