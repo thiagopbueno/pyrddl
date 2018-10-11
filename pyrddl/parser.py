@@ -13,6 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with pyrddl. If not, see <http://www.gnu.org/licenses/>.
 
+import logging
+import os
+import tempfile
 
 from ply import lex, yacc
 
@@ -246,6 +249,8 @@ class RDDLParser(object):
             ('left', 'TIMES', 'DIV'),
             ('right', 'UMINUS')
         )
+        self.parsing_logfile = None
+        self.debugging = False
 
     def p_rddl(self, p):
         '''rddl : rddl_block'''
@@ -762,7 +767,8 @@ class RDDLParser(object):
 
     def p_objects_list(self, p):
         '''objects_list : objects_list objects_def
-                        | objects_def'''
+                        | objects_def
+                        | empty'''
         if len(p) == 3:
             p[1].append(p[2])
             p[0] = p[1]
@@ -837,10 +843,18 @@ class RDDLParser(object):
         pass
 
     def p_error(self, p):
-        print('Syntax error in input!')
+        if self.debugging:
+            print('Syntax error in input! See log file: {}'.format(self.parsing_logfile))
+
+        print('Syntax error in input! Line: {} failed token:\n{}'.format(p.lineno, p))
 
     def build(self, **kwargs):
         self._parser = yacc.yacc(module=self, **kwargs)
 
     def parse(self, input):
+        if self.debugging:
+            self.parsing_logfile = os.path.join(tempfile.gettempdir(), 'rddl_parse.log')
+            log = logging.getLogger(__name__)
+            log.addHandler(logging.FileHandler(self.parsing_logfile))
+            return self._parser.parse(input=input, lexer=self.lexer, debug=log)
         return self._parser.parse(input=input, lexer=self.lexer)
