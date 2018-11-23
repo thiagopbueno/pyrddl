@@ -40,8 +40,8 @@ class Expression(object):
     @property
     def etype(self) -> Tuple[str, str]:
         '''Returns the expression's type.'''
-        if self._expr[0] == 'number':
-            return ('number', str(type(self._expr[1])))
+        if self._expr[0] in ['number', 'boolean']:
+            return ('constant', str(type(self._expr[1])))
         elif self._expr[0] == 'pvar_expr':
             return ('pvar', self._expr[1][0])
         elif self._expr[0] == 'randomvar':
@@ -58,6 +58,12 @@ class Expression(object):
             return ('aggregation', 'sum')
         elif self._expr[0] == 'prod':
             return ('aggregation', 'prod')
+        elif self._expr[0] == 'avg':
+            return ('aggregation', 'avg')
+        elif self._expr[0] == 'max':
+            return ('aggregation', 'maximum')
+        elif self._expr[0] == 'min':
+            return ('aggregation', 'minimum')
         elif self._expr[0] == 'forall':
             return ('aggregation', 'forall')
         elif self._expr[0] == 'exists':
@@ -70,7 +76,7 @@ class Expression(object):
     @property
     def args(self) -> Union[Value, Sequence[ExprArg]]:
         '''Returns the expression's arguments.'''
-        if self._expr[0] == 'number':
+        if self._expr[0] in ['number', 'boolean']:
             return self._expr[1]
         elif self._expr[0] == 'pvar_expr':
             return self._expr[1]
@@ -84,14 +90,16 @@ class Expression(object):
             return self._expr[1]
         elif self._expr[0] == 'func':
             return self._expr[1][1]
-        elif self._expr[0] in ['sum', 'prod', 'forall', 'exists']:
-            return self._expr[1]
-        elif self._expr[0] == 'abs':
+        elif self._expr[0] in ['sum', 'prod', 'avg', 'max', 'min', 'forall', 'exists']:
             return self._expr[1]
         elif self._expr[0] == 'if':
             return self._expr[1]
         else:
             return []
+
+    def is_constant_expression(self) -> bool:
+        '''Returns True if constant expression. False, othersize.'''
+        return self.etype[0] == 'constant'
 
     def is_pvariable_expression(self) -> bool:
         '''Returns True if pvariable expression. False, otherwise.'''
@@ -111,21 +119,17 @@ class Expression(object):
             raise ValueError('Expression is not a pvariable.')
         return self._pvar_to_name(self.args)
 
-    def is_number_expression(self) -> bool:
-        '''Returns True if number expression. False, othersize.'''
-        return self.etype[0] == 'number'
-
     @property
     def value(self):
-        '''Returns the value of number expression.
+        '''Returns the value of a constant expression.
 
         Returns:
-            Value of number.
+            Value of constant.
 
         Raises:
-            ValueError: If not a number expression.
+            ValueError: If not a constant expression.
         '''
-        if not self.is_number_expression():
+        if not self.is_constant_expression():
             raise ValueError('Expression is not a number.')
         return self.args
 
@@ -141,7 +145,7 @@ class Expression(object):
         if isinstance(expr, tuple):
             return '{}{}'.format(ident, str(expr))
 
-        if expr.etype[0] in ['pvar', 'number']:
+        if expr.etype[0] in ['pvar', 'constant']:
             return '{}Expression(etype={}, args={})'.format(ident, expr.etype, expr.args)
 
         if not isinstance(expr, Expression):

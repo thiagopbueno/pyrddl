@@ -63,7 +63,10 @@ def print_cpfs(fluent_type, cpfs):
     for cpf in cpfs:
         name = cpf.pvar[1][0]
         args = '' if cpf.pvar[1][1] is None else ', '.join(cpf.pvar[1][1])
-        print('{}({}) = '.format(name, args))
+        if len(args) > 0:
+            print('{}({}) = '.format(name, args))
+        else:
+            print('{} = '.format(name))
         print(cpf.expr)
         print()
 
@@ -89,7 +92,10 @@ def print_initializer(initializer_type, initializers):
         name = initializer[0][0]
         args = '' if initializer[0][1] is None else ', '.join(initializer[0][1])
         value = initializer[1]
-        print('{}({}) = {}'.format(name, args, value))
+        if len(args) > 0:
+            print('{}({}) = {}'.format(name, args, value))
+        else:
+            print('{} = {}'.format(name, value))
 
 
 def print_domain(d, verbose=False):
@@ -129,13 +135,15 @@ def print_non_fluents(nf, verbose=False):
     if verbose:
 
         # objects
-        print('>> objects:')
-        for t, objects in nf.objects:
-            print('     - {}: {}'.format(t, ','.join(objects)))
-        print()
+        if hasattr(nf, 'objects'):
+            print('>> objects:')
+            for t, objects in nf.objects:
+                print('     - {}: {}'.format(t, ','.join(objects)))
+            print()
 
         # non-fluent initializers
-        print_initializer('non-fluents', nf.init_non_fluent)
+        if hasattr(nf, 'init_non_fluent'):
+            print_initializer('non-fluents', nf.init_non_fluent)
 
     print()
 
@@ -164,7 +172,7 @@ if __name__ == '__main__':
     rddl = read_file(args.rddl)
 
     # buid parser
-    parser = RDDLParser()
+    parser = RDDLParser(verbose=args.verbose)
     parser.build()
 
     # parse RDDL

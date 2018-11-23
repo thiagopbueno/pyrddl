@@ -226,10 +226,12 @@ class RDDLlex(object):
 
 class RDDLParser(object):
 
-    def __init__(self, lexer=None):
+    def __init__(self, lexer=None, verbose=False):
         if lexer is None:
             self.lexer = RDDLlex()
             self.lexer.build()
+
+        self._verbose = verbose
 
         self.tokens = self.lexer.tokens
 
@@ -281,6 +283,7 @@ class RDDLParser(object):
             p[0] = p[4]
         elif len(p) == 6:
             p[0] = p[3]
+        self._print_verbose('requirements')
 
     def p_domain_list(self, p):
         '''domain_list : domain_list type_section
@@ -301,6 +304,7 @@ class RDDLParser(object):
     def p_type_section(self, p):
         '''type_section : TYPES LCURLY type_list RCURLY SEMI'''
         p[0] = ('types', p[3])
+        self._print_verbose('types')
 
     def p_type_list(self, p):
         '''type_list : type_list type_def
@@ -334,6 +338,7 @@ class RDDLParser(object):
     def p_pvar_section(self, p):
         '''pvar_section : PVARIABLES LCURLY pvar_list RCURLY SEMI'''
         p[0] = ('pvariables', p[3])
+        self._print_verbose('pvariables')
 
     def p_pvar_list(self, p):
         '''pvar_list : pvar_list pvar_def
@@ -386,6 +391,7 @@ class RDDLParser(object):
     def p_cpf_section(self, p):
         '''cpf_section : cpf_header LCURLY cpf_list RCURLY SEMI'''
         p[0] = ('cpfs', (p[1], p[3]))
+        self._print_verbose('cpfs')
 
     def p_cpf_header(self, p):
         '''cpf_header : CPFS
@@ -408,6 +414,7 @@ class RDDLParser(object):
     def p_reward_section(self, p):
         '''reward_section : REWARD ASSIGN_EQUAL expr SEMI'''
         p[0] = ('reward', p[3])
+        self._print_verbose('reward')
 
     def p_action_precond_section(self, p):
         '''action_precond_section : ACTION_PRECONDITIONS LCURLY action_precond_list RCURLY SEMI
@@ -416,6 +423,7 @@ class RDDLParser(object):
             p[0] = ('preconds', p[3])
         elif len(p) == 5:
             p[0] = ('preconds', [])
+        self._print_verbose('action-preconditions')
 
     def p_action_precond_list(self, p):
         '''action_precond_list : action_precond_list action_precond_def
@@ -437,6 +445,7 @@ class RDDLParser(object):
             p[0] = ('constraints', p[3])
         elif len(p) == 5:
             p[0] = ('constraints', [])
+        self._print_verbose('state-action-constraints')
 
     def p_state_cons_list(self, p):
         '''state_cons_list : state_cons_list state_cons_def
@@ -458,6 +467,7 @@ class RDDLParser(object):
             p[0] = ('invariants', p[3])
         elif len(p) == 5:
             p[0] = ('invariants', [])
+        self._print_verbose('invariants')
 
     def p_state_invariant_list(self, p):
         '''state_invariant_list : state_invariant_list state_invariant_def
@@ -719,18 +729,22 @@ class RDDLParser(object):
     def p_nonfluents_section(self, p):
         '''nonfluents_section : NON_FLUENTS ASSIGN_EQUAL IDENT SEMI'''
         p[0] = ('non_fluents', p[3])
+        self._print_verbose('non-fluents')
 
     def p_objects_section(self, p):
         '''objects_section : OBJECTS LCURLY objects_list RCURLY SEMI'''
         p[0] = ('objects', p[3])
+        self._print_verbose('objects')
 
     def p_init_state_section(self, p):
         '''init_state_section : INIT_STATE LCURLY pvar_inst_list RCURLY SEMI'''
         p[0] = ('init_state', p[3])
+        self._print_verbose('init-state')
 
     def p_max_nondef_actions_section(self, p):
         '''max_nondef_actions_section : MAX_NONDEF_ACTIONS ASSIGN_EQUAL pos_int_type_or_pos_inf SEMI'''
         p[0] = ('max_nondef_actions', p[3])
+        self._print_verbose('max-non-def-actions')
 
     def p_horizon_spec_section(self, p):
         '''horizon_spec_section : HORIZON ASSIGN_EQUAL pos_int_type_or_pos_inf SEMI
@@ -739,10 +753,12 @@ class RDDLParser(object):
             p[0] = ('horizon', p[3])
         elif len(p) == 7:
             p[0] = ('horizon', p[5])
+        self._print_verbose('horizon')
 
     def p_discount_section(self, p):
         '''discount_section : DISCOUNT ASSIGN_EQUAL DOUBLE SEMI'''
         p[0] = ('discount', p[3])
+        self._print_verbose('discount')
 
     def p_nonfluent_block(self, p):
         '''nonfluent_block : NON_FLUENTS IDENT LCURLY nonfluent_list RCURLY'''
@@ -764,6 +780,7 @@ class RDDLParser(object):
     def p_init_non_fluent_section(self, p):
         '''init_non_fluent_section : NON_FLUENTS LCURLY pvar_inst_list RCURLY SEMI'''
         p[0] = ('init_non_fluent', p[3])
+        self._print_verbose('init-non-fluent')
 
     def p_objects_list(self, p):
         '''objects_list : objects_list objects_def
@@ -858,3 +875,7 @@ class RDDLParser(object):
             log.addHandler(logging.FileHandler(self.parsing_logfile))
             return self._parser.parse(input=input, lexer=self.lexer, debug=log)
         return self._parser.parse(input=input, lexer=self.lexer)
+
+    def _print_verbose(self, p_name):
+        if self._verbose:
+            print('>> Parsed `{}` ...'.format(p_name))
