@@ -37,7 +37,7 @@ The ``pyrddl`` package provides an API for integrating RDDL parser
 with your own Python package/project.
 
 ```python
-from pyrddl import RDDLParser
+from pyrddl.parser import RDDLParser
 
 # read RDDL file
 with open(filepath, 'r') as file:
