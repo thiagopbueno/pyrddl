@@ -19,7 +19,6 @@ from pyrddl.pvariable import PVariable
 from pyrddl.cpf import CPF
 from pyrddl.expr import Expression
 
-
 from typing import Dict, List, Sequence, Optional, Tuple
 
 Type = Tuple[str, str]
