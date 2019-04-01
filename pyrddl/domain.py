@@ -20,7 +20,7 @@ from pyrddl.cpf import CPF
 from pyrddl.expr import Expression
 
 
-from typing import Dict, List, Sequence, Tuple
+from typing import Dict, List, Sequence, Optional, Tuple
 
 Type = Tuple[str, str]
 
@@ -64,6 +64,7 @@ class Domain(object):
 
     def build(self):
         self._build_preconditions_table()
+        self._build_action_bound_constraints_table()
 
     def _build_preconditions_table(self):
         '''Builds the local action precondition expressions.'''
@@ -79,6 +80,61 @@ class Domain(object):
                 self.local_action_preconditions[name].append(precond)
             else:
                 self.global_action_preconditions.append(precond)
+
+    def _build_action_bound_constraints_table(self):
+        '''Builds the lower and upper action bound constraint expressions.'''
+        self.action_lower_bound_constraints = {}
+        self.action_upper_bound_constraints = {}
+
+        for name, preconds in self.local_action_preconditions.items():
+
+            for precond in preconds:
+                expr_type = precond.etype
+                expr_args = precond.args
+
+                bounds_expr = None
+
+                if expr_type == ('aggregation', 'forall'):
+                    inner_expr = expr_args[1]
+                    if inner_expr.etype[0] == 'relational':
+                        bounds_expr = inner_expr
+                elif expr_type[0] == 'relational':
+                    bounds_expr = precond
+
+                if bounds_expr:
+                    # lower bound
+                    bound = self._extract_lower_bound(name, bounds_expr)
+                    if bound is not None:
+                        self.action_lower_bound_constraints[name] = bound
+                    else: # upper bound
+                        bound = self._extract_upper_bound(name, bounds_expr)
+                        if bound is not None:
+                            self.action_upper_bound_constraints[name] = bound
+
+
+    def _extract_lower_bound(self, name: str, expr: Expression) -> Optional[Expression]:
+        '''Returns the lower bound expression of the action with given `name`.'''
+        etype = expr.etype
+        args = expr.args
+        if etype[1] in ['<=', '<']:
+            if args[1].is_pvariable_expression() and args[1].name == name:
+                return args[0]
+        elif etype[1] in ['>=', '>']:
+            if args[0].is_pvariable_expression() and args[0].name == name:
+                return args[1]
+        return None
+
+    def _extract_upper_bound(self, name: str, expr: Expression) -> Optional[Expression]:
+        '''Returns the upper bound expression of the action with given `name`.'''
+        etype = expr.etype
+        args = expr.args
+        if etype[1] in ['<=', '<']:
+            if args[0].is_pvariable_expression() and args[0].name == name:
+                return args[1]
+        elif etype[1] in ['>=', '>']:
+            if args[1].is_pvariable_expression() and args[1].name == name:
+                return args[0]
+        return None
 
     @property
     def non_fluents(self) -> Dict[str, PVariable]:

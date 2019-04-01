@@ -16,6 +16,7 @@
 
 from pyrddl.parser import RDDLParser
 from pyrddl.pvariable import PVariable
+from pyrddl.expr import Expression
 from pyrddl import utils
 
 import unittest
@@ -232,3 +233,29 @@ class TestDomain(unittest.TestCase):
         global_preconds = self.rddl1.domain.global_action_preconditions
         self.assertIsInstance(global_preconds, list)
         self.assertEqual(len(global_preconds), 0)
+
+    def test_lower_bound_constraints(self):
+        lower_bounds = self.rddl1.domain.action_lower_bound_constraints
+        self.assertIsInstance(lower_bounds, dict)
+        self.assertIn('outflow/1', lower_bounds)
+        lower = lower_bounds['outflow/1']
+        self.assertIsInstance(lower, Expression)
+        self.assertTrue(lower.is_constant_expression())
+        self.assertEqual(lower.value, 0)
+
+        # lower_bounds = self.rddl3.action_lower_bound_constraints
+        # self.assertIsInstance(lower_bounds, dict)
+        # self.assertIn('AIR/1', lower_bounds)
+        # lower = lower_bounds['AIR/1']
+        # self.assertIsInstance(lower, Expression)
+        # self.assertTrue(lower.is_constant_expression())
+        # self.assertEqual(lower.value, 0)
+
+    def test_upper_bound_constraints(self):
+        upper_bounds = self.rddl1.domain.action_upper_bound_constraints
+        self.assertIsInstance(upper_bounds, dict)
+        self.assertIn('outflow/1', upper_bounds)
+        upper = upper_bounds['outflow/1']
+        self.assertIsInstance(upper, Expression)
+        self.assertTrue(upper.is_pvariable_expression())
+        self.assertEqual(upper.name, 'rlevel/1')
