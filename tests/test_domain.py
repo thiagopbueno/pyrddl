@@ -35,7 +35,9 @@ class TestDomain(unittest.TestCase):
         parser.build()
 
         cls.rddl1 = parser.parse(RESERVOIR)
+        cls.rddl1.build()
         cls.rddl2 = parser.parse(MARS_ROVER)
+        cls.rddl2.build()
         cls.rddls = [cls.rddl1, cls.rddl2]
 
     def test_non_fluents(self):

@@ -44,4 +44,5 @@ class NonFluents(object):
 
     def __init__(self, name: str, sections: Dict[str, Sequence]) -> None:
         self.name = name
+        self.objects = []
         self.__dict__.update(sections)
