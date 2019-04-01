@@ -101,3 +101,51 @@ class Domain(object):
                 state_cpfs.append(cpf)
         state_cpfs = sorted(state_cpfs, key=lambda cpf: cpf.name)
         return state_cpfs
+
+    @property
+    def non_fluent_ordering(self) -> List[str]:
+        '''The list of non-fluent names in canonical order.
+
+        Returns:
+            List[str]: A list of fluent names.
+        '''
+        return sorted(self.non_fluents)
+
+    @property
+    def state_fluent_ordering(self) -> List[str]:
+        '''The list of state-fluent names in canonical order.
+
+        Returns:
+            List[str]: A list of fluent names.
+        '''
+        return sorted(self.state_fluents)
+
+    @property
+    def action_fluent_ordering(self) -> List[str]:
+        '''The list of action-fluent names in canonical order.
+
+        Returns:
+            List[str]: A list of fluent names.
+        '''
+        return sorted(self.action_fluents)
+
+    @property
+    def interm_fluent_ordering(self) -> List[str]:
+        '''The list of intermediate-fluent names in canonical order.
+
+        Returns:
+            List[str]: A list of fluent names.
+        '''
+        interm_fluents = self.intermediate_fluents.values()
+        key = lambda pvar: (pvar.level, pvar.name)
+        return [str(pvar) for pvar in sorted(interm_fluents, key=key)]
+
+    @property
+    def next_state_fluent_ordering(self) -> List[str]:
+        '''The list of next state-fluent names in canonical order.
+
+        Returns:
+            List[str]: A list of fluent names.
+        '''
+        key = lambda x: x.name
+        return [cpf.name for cpf in sorted(self.state_cpfs, key=key)]

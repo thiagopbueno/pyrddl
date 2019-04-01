@@ -1,5 +1,22 @@
+# This file is part of pyrddl.
+
+# pyrddl is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# pyrddl is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with pyrddl. If not, see <http://www.gnu.org/licenses/>.
+
+
 from pyrddl.parser import RDDLParser
 from pyrddl.pvariable import PVariable
+from pyrddl import utils
 
 import unittest
 
@@ -144,3 +161,61 @@ class TestDomain(unittest.TestCase):
                 arity = name[name.index('/')+1:]
                 name = '{}/{}'.format(functor, arity)
                 self.assertIn(name, state_fluents)
+
+    def test_non_fluent_ordering(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            non_fluents = rddl.domain.non_fluents
+            non_fluent_ordering = rddl.domain.non_fluent_ordering
+            self.assertIsInstance(non_fluent_ordering, list)
+            self.assertEqual(len(non_fluent_ordering), len(non_fluents))
+            for non_fluent in non_fluent_ordering:
+                self.assertIn(non_fluent, non_fluents)
+            self.assertListEqual(non_fluent_ordering, sorted(non_fluent_ordering))
+
+    def test_state_fluent_ordering(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            current_state_fluents = rddl.domain.state_fluents
+            current_state_ordering = rddl.domain.state_fluent_ordering
+            self.assertIsInstance(current_state_ordering, list)
+            self.assertEqual(len(current_state_ordering), len(current_state_fluents))
+            for fluent in current_state_fluents:
+                self.assertIn(fluent, current_state_ordering)
+            self.assertListEqual(current_state_ordering, sorted(current_state_ordering))
+
+            next_state_ordering = rddl.domain.next_state_fluent_ordering
+            self.assertIsInstance(next_state_ordering, list)
+
+            self.assertEqual(len(current_state_ordering), len(next_state_ordering))
+            for current_fluent, next_fluent in zip(current_state_ordering, next_state_ordering):
+                self.assertEqual(utils.rename_state_fluent(current_fluent), next_fluent)
+                self.assertEqual(utils.rename_next_state_fluent(next_fluent), current_fluent)
+
+    def test_action_fluent_ordering(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            action_fluents = rddl.domain.action_fluents
+            action_fluent_ordering = rddl.domain.action_fluent_ordering
+            self.assertIsInstance(action_fluent_ordering, list)
+            self.assertEqual(len(action_fluent_ordering), len(action_fluents))
+            for action_fluent in action_fluent_ordering:
+                self.assertIn(action_fluent, action_fluents)
+            self.assertListEqual(action_fluent_ordering, sorted(action_fluent_ordering))
+
+    def test_interm_fluent_ordering(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            interm_fluents = rddl.domain.intermediate_fluents
+            interm_fluent_ordering = rddl.domain.interm_fluent_ordering
+            self.assertIsInstance(interm_fluent_ordering, list)
+            self.assertEqual(len(interm_fluent_ordering), len(interm_fluents))
+            for interm_fluent in interm_fluent_ordering:
+                self.assertIn(interm_fluent, interm_fluents)
+
+            for i in range(1, len(interm_fluent_ordering) - 1):
+                name1, name2 = interm_fluent_ordering[i], interm_fluent_ordering[i+1]
+                fluent1, fluent2 = interm_fluents[name1], interm_fluents[name2]
+                self.assertLessEqual(fluent1.level, fluent2.level)
+                if fluent1.level == fluent2.level:
+                    self.assertLessEqual(fluent1.name, fluent2.name)
