@@ -221,3 +221,14 @@ class TestDomain(unittest.TestCase):
                 self.assertLessEqual(fluent1.level, fluent2.level)
                 if fluent1.level == fluent2.level:
                     self.assertLessEqual(fluent1.name, fluent2.name)
+
+    def test_build_action_preconditions_table(self):
+        local_preconds = self.rddl1.domain.local_action_preconditions
+        self.assertIsInstance(local_preconds, dict)
+        self.assertEqual(len(local_preconds), 1)
+        self.assertIn('outflow/1', local_preconds)
+        self.assertEqual(len(local_preconds['outflow/1']), 2)
+
+        global_preconds = self.rddl1.domain.global_action_preconditions
+        self.assertIsInstance(global_preconds, list)
+        self.assertEqual(len(global_preconds), 0)

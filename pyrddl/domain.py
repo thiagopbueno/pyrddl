@@ -62,6 +62,24 @@ class Domain(object):
         self.invariants = sections.get('invariants', [])
         self.constraints = sections.get('constraints', [])
 
+    def build(self):
+        self._build_preconditions_table()
+
+    def _build_preconditions_table(self):
+        '''Builds the local action precondition expressions.'''
+        self.local_action_preconditions = dict()
+        self.global_action_preconditions = []
+        action_fluents = self.action_fluents
+        for precond in self.preconds:
+            scope = precond.scope
+            action_scope = [action for action in scope if action in action_fluents]
+            if len(action_scope) == 1:
+                name = action_scope[0]
+                self.local_action_preconditions[name] = self.local_action_preconditions.get(name, [])
+                self.local_action_preconditions[name].append(precond)
+            else:
+                self.global_action_preconditions.append(precond)
+
     @property
     def non_fluents(self) -> Dict[str, PVariable]:
         '''Returns non-fluent pvariables.'''
