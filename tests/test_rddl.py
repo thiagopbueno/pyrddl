@@ -104,3 +104,78 @@ class TestRDDL(unittest.TestCase):
             for name, actual_variables in fluent_variables:
                 self.assertIn(name, expected_variables)
                 self.assertListEqual(actual_variables, expected_variables[name])
+
+    def test_state_size(self):
+        rddls = [self.rddl1, self.rddl2]
+        for i, rddl in enumerate(rddls):
+            state_size = rddl.state_size
+            self.assertIsInstance(state_size, tuple)
+            for shape in state_size:
+                self.assertIsInstance(shape, tuple)
+
+            state_fluent_ordering = rddl.domain.state_fluent_ordering
+            next_state_fluent_ordering = rddl.domain.next_state_fluent_ordering
+            self.assertEqual(len(state_size), len(state_fluent_ordering))
+            self.assertEqual(len(state_size), len(next_state_fluent_ordering))
+
+    def test_action_size(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            action_size = rddl.action_size
+            action_fluent_ordering = rddl.domain.action_fluent_ordering
+            self.assertIsInstance(action_size, tuple)
+            self.assertEqual(len(action_size), len(action_fluent_ordering))
+            for shape in action_size:
+                self.assertIsInstance(shape, tuple)
+
+    def test_interm_size(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            interm_size = rddl.interm_size
+            interm_ordering = rddl.domain.interm_fluent_ordering
+            self.assertIsInstance(interm_size, tuple)
+            self.assertEqual(len(interm_size), len(interm_ordering))
+            for shape in interm_size:
+                self.assertIsInstance(shape, tuple)
+
+    def test_state_range_type(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            state_range_type = rddl.state_range_type
+            state_fluents = rddl.domain.state_fluents
+            state_fluent_ordering = rddl.domain.state_fluent_ordering
+            self.assertIsInstance(state_range_type, tuple)
+            self.assertEqual(len(state_range_type), len(state_fluents))
+            self.assertEqual(len(state_range_type), len(state_fluent_ordering))
+            for name, range_type in zip(state_fluent_ordering, state_range_type):
+                fluent = state_fluents[name]
+                self.assertIsInstance(range_type, str)
+                self.assertEqual(range_type, fluent.range)
+
+    def test_interm_range_type(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            interm_range_type = rddl.interm_range_type
+            interm_fluents = rddl.domain.intermediate_fluents
+            interm_fluent_ordering = rddl.domain.interm_fluent_ordering
+            self.assertIsInstance(interm_range_type, tuple)
+            self.assertEqual(len(interm_range_type), len(interm_fluents))
+            self.assertEqual(len(interm_range_type), len(interm_fluent_ordering))
+            for name, range_type in zip(interm_fluent_ordering, interm_range_type):
+                fluent = interm_fluents[name]
+                self.assertIsInstance(range_type, str)
+                self.assertEqual(range_type, fluent.range)
+
+    def test_action_range_type(self):
+        rddls = [self.rddl1, self.rddl2]
+        for rddl in rddls:
+            action_range_type = rddl.action_range_type
+            action_fluents = rddl.domain.action_fluents
+            action_fluent_ordering = rddl.domain.action_fluent_ordering
+            self.assertIsInstance(action_range_type, tuple)
+            self.assertEqual(len(action_range_type), len(action_fluents))
+            self.assertEqual(len(action_range_type), len(action_fluent_ordering))
+            for name, range_type in zip(action_fluent_ordering, action_range_type):
+                fluent = action_fluents[name]
+                self.assertIsInstance(range_type, str)
+                self.assertEqual(range_type, fluent.range)
