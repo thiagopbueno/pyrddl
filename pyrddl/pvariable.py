@@ -66,6 +66,10 @@ class PVariable(object):
         '''Returns True if fluent is of non-fluent type. False, otherwise.'''
         return self.fluent_type == 'non-fluent'
 
+    def is_fluent(self) -> bool:
+        '''Returns True if fluent is not a non-fluent type. False, otherwise.'''
+        return self.fluent_type != 'non-fluent'
+
     def is_state_fluent(self) -> bool:
         '''Returns True if fluent is of state-fluent type. False, otherwise.'''
         return self.fluent_type == 'state-fluent'
