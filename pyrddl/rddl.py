@@ -18,6 +18,7 @@ from pyrddl.domain import Domain
 from pyrddl.instance import Instance
 from pyrddl.nonfluents import NonFluents
 
+import collections
 import itertools
 from typing import Dict, List, Sequence, Optional, Tuple, Union
 
@@ -52,6 +53,7 @@ class RDDL(object):
     def build(self):
         self.domain.build()
         self._build_object_table()
+        self._build_fluent_table()
 
     def _build_object_table(self):
         '''Builds the object table for each RDDL type.'''
@@ -67,6 +69,26 @@ class RDDL(object):
                     'idx': idx,
                     'objects': objs
                 }
+
+    def _build_fluent_table(self):
+        '''Builds the fluent table for each RDDL pvariable.'''
+        self.fluent_table = collections.OrderedDict()
+
+        for name, size in zip(self.domain.non_fluent_ordering, self.non_fluent_size):
+            non_fluent = self.domain.non_fluents[name]
+            self.fluent_table[name] = (non_fluent, size)
+
+        for name, size in zip(self.domain.state_fluent_ordering, self.state_size):
+            fluent = self.domain.state_fluents[name]
+            self.fluent_table[name] = (fluent, size)
+
+        for name, size in zip(self.domain.action_fluent_ordering, self.action_size):
+            fluent = self.domain.action_fluents[name]
+            self.fluent_table[name] = (fluent, size)
+
+        for name, size in zip(self.domain.interm_fluent_ordering, self.interm_size):
+            fluent = self.domain.intermediate_fluents[name]
+            self.fluent_table[name] = (fluent, size)
 
     @property
     def non_fluent_variables(self) -> FluentParamsList:
@@ -115,6 +137,18 @@ class RDDL(object):
         fluents = self.domain.action_fluents
         ordering = self.domain.action_fluent_ordering
         return self._fluent_params(fluents, ordering)
+
+    @property
+    def non_fluent_size(self) -> Sequence[Sequence[int]]:
+        '''The size of each non-fluent in canonical order.
+
+        Returns:
+            Sequence[Sequence[int]]: A tuple of tuple of integers
+            representing the shape and size of each non-fluent.
+        '''
+        fluents = self.domain.non_fluents
+        ordering = self.domain.non_fluent_ordering
+        return self._fluent_size(fluents, ordering)
 
     @property
     def state_size(self) -> Sequence[Sequence[int]]:

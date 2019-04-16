@@ -15,6 +15,7 @@
 
 
 from pyrddl.parser import RDDLParser
+from pyrddl.pvariable import PVariable
 
 import unittest
 
@@ -47,6 +48,15 @@ class TestRDDL(unittest.TestCase):
         for i, obj in enumerate(objs):
             self.assertIn(obj, idx)
             self.assertEqual(idx[obj], i)
+
+    def test_build_fluent_table(self):
+        self.assertEqual(len(self.rddl1.fluent_table), 16)
+        for name, (fluent, size) in self.rddl1.fluent_table.items():
+            self.assertIsInstance(name, str)
+            self.assertIn(fluent.name, name)
+            self.assertIsInstance(fluent, PVariable)
+            self.assertIsInstance(size, tuple)
+            self.assertEqual(len(size), fluent.arity)
 
     def test_state_fluent_variables(self):
         rddls = [self.rddl1, self.rddl2]
