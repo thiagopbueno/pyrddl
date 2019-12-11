@@ -283,3 +283,21 @@ class RDDL(object):
         param_types = [] if param_types is None else param_types
         shape = tuple(self.object_table[ptype]['size'] for ptype in param_types)
         return shape
+
+    def get_dependencies(self, expr):
+        deps = set()
+
+        expressions = [expr]
+        while expressions:
+            expr = expressions.pop()
+
+            for name in expr.scope:
+                fluent, _ = self.fluent_table[name]
+
+                if fluent.is_intermediate_fluent():
+                    cpf = self.domain.get_intermediate_cpf(name)
+                    expressions.append(cpf.expr)
+                else:
+                    deps.add(fluent)
+
+        return deps
