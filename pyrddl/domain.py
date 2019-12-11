@@ -163,6 +163,11 @@ class Domain(object):
         interm_cpfs = sorted(interm_cpfs, key=lambda cpf: (self.intermediate_fluents[cpf.name].level, cpf.name))
         return interm_cpfs
 
+    def get_intermediate_cpf(self, name):
+        for cpf in self.intermediate_cpfs:
+            if cpf.name == name:
+                return cpf
+
     @property
     def state_cpfs(self) -> List[CPF]:
         '''Returns list of state-fluent CPFs.'''
