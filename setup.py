@@ -17,6 +17,7 @@ setup(
     author_email='thiago.pbueno@gmail.com',
     description='RDDL lexer/parser in Python3.',
     long_description=read('README.md'),
+    long_description_content_type='text/markdown',
     license='GNU General Public License v3.0',
     keywords=['rddl', 'parser', 'mdp', 'dbn'],
     url='https://github.com/thiagopbueno/pyrddl',
