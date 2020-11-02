@@ -47,8 +47,13 @@ class RDDL(object):
 
     def __init__(self, blocks: Dict[str, Block]) -> None:
         self.domain = blocks['domain']
-        self.non_fluents = blocks['non_fluents']
         self.instance = blocks['instance']
+        try:
+            self.non_fluents = blocks['non_fluents']
+        except KeyError:
+            self.non_fluents = blocks['instance'].non_fluents
+            self.non_fluents.objects = self.instance.objects
+
 
     def build(self):
         self.domain.build()
