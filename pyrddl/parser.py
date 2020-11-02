@@ -727,8 +727,13 @@ class RDDLParser(object):
         p[0] = ('domain', p[3])
 
     def p_nonfluents_section(self, p):
-        '''nonfluents_section : NON_FLUENTS ASSIGN_EQUAL IDENT SEMI'''
-        p[0] = ('non_fluents', p[3])
+        '''nonfluents_section : NON_FLUENTS ASSIGN_EQUAL IDENT SEMI
+                              | NON_FLUENTS LCURLY pvar_inst_list RCURLY SEMI'''
+        if len(p) == 5:
+            p[0] = ('non_fluents', p[3])
+        elif len(p) == 6:
+            nf = NonFluents('anonymous', {'init_non_fluent': p[3]})
+            p[0] = ('non_fluents', nf)
         self._print_verbose('non-fluents')
 
     def p_objects_section(self, p):
@@ -764,6 +769,11 @@ class RDDLParser(object):
         '''nonfluent_block : NON_FLUENTS IDENT LCURLY nonfluent_list RCURLY'''
         nf = NonFluents(p[2], p[4])
         p[0] = ('non_fluents', nf)
+
+    #def p_anonymous_nonfluent_block(self, p):
+    #    '''anonymous_nonfluent_block : NON_FLUENTS LCURLY nonfluent_list RCURLY SEMI'''
+    #    nf = NonFluents('anonymous', p[3])
+    #    p[0] = ('non_fluents', nf)
 
     def p_nonfluent_list(self, p):
         '''nonfluent_list : nonfluent_list domain_section
