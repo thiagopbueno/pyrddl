@@ -25,7 +25,7 @@ setup(
     scripts=['scripts/pyrddl'],
     install_requires=[
         'ply',
-        'typing'
+        'typing; python_version<"3.5"'
     ],
     include_package_data=True,
     zip_safe=False,
